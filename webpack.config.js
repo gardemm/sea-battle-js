@@ -55,43 +55,7 @@ module.exports = (env, argv) => {
                             }
                         },
                     ],
-                },
-                // {
-                //     test: /\.scss$/,
-                //     use: [
-                //         {
-                //             loader: 'file-loader',
-                //             options: {
-                //                 name: '[name].css',
-                //                 outputPath: 'css/'
-                //             }
-                //         },
-                //         {
-                //             loader: 'extract-loader'
-                //         },
-                //         {
-                //             loader: 'css-loader',
-                //             options: {
-                //                 minimize: !isDev,
-                //                 sourceMap: true
-                //             }
-                //         },
-                //         {
-                //             loader: 'postcss-loader',
-                //             options: {
-                //                 plugins: [
-                //                     autoprefixer({
-                //                         browsers:['ie >= 8', 'last 4 version']
-                //                     })
-                //                 ],
-                //                 sourceMap: true
-                //             }
-                //         },
-                //         {
-                //             loader: "sass-loader" // compiles Sass to CSS
-                //         }
-                //     ]
-                // }
+                }
             ]
         },
         plugins: [
