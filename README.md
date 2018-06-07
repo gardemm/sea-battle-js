@@ -4,6 +4,8 @@
 
 > IE >= 8 
 
+Play [demo](http://sea-battle-js.archebasov.ru).
+
 ## install
 ```bash
     yarn
