@@ -54,7 +54,7 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            !isDev ? new BundleAnalyzerPlugin() : function () {}
+            argv.size ? new BundleAnalyzerPlugin() : function () {}
         ]
     }
 };

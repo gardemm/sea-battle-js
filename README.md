@@ -21,6 +21,6 @@ Play [demo](http://sea-battle-js.archebasov.ru).
 
 ## build
 ```bash
-    yarn build # production 
+    yarn build [--size] # build and watch production bundle size 
 
 ```
