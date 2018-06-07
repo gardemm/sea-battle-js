@@ -1,5 +1,7 @@
 const autoprefixer = require('autoprefixer');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
 
@@ -9,6 +11,15 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
+                    test: /\.html$/,
+                    use: [
+                        {
+                            loader: "html-loader",
+                            options: { minimize: false }
+                        }
+                    ]
+                },
+                {
                     test: /\.js$/,
                     loader: 'babel-loader',
                     query: {
@@ -16,29 +27,20 @@ module.exports = (env, argv) => {
                     }
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.(css|sass|scss)$/,
                     use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].css',
-                                outputPath: 'css/'
-                            }
-                        },
-                        {
-                            loader: 'extract-loader'
-                        },
+                        MiniCssExtractPlugin.loader,
                         {
                             loader: 'css-loader',
                             options: {
-                                minimize: !isDev,
-                                sourceMap: true
+                                importLoaders: 2,
+                                sourceMap: true,
                             }
                         },
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [
+                                plugins:() => [
                                     autoprefixer({
                                         browsers:['ie >= 8', 'last 4 version']
                                     })
@@ -47,14 +49,61 @@ module.exports = (env, argv) => {
                             }
                         },
                         {
-                            loader: "sass-loader" // compiles Sass to CSS
-                        }
-                    ]
-                }
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+                    ],
+                },
+                // {
+                //     test: /\.scss$/,
+                //     use: [
+                //         {
+                //             loader: 'file-loader',
+                //             options: {
+                //                 name: '[name].css',
+                //                 outputPath: 'css/'
+                //             }
+                //         },
+                //         {
+                //             loader: 'extract-loader'
+                //         },
+                //         {
+                //             loader: 'css-loader',
+                //             options: {
+                //                 minimize: !isDev,
+                //                 sourceMap: true
+                //             }
+                //         },
+                //         {
+                //             loader: 'postcss-loader',
+                //             options: {
+                //                 plugins: [
+                //                     autoprefixer({
+                //                         browsers:['ie >= 8', 'last 4 version']
+                //                     })
+                //                 ],
+                //                 sourceMap: true
+                //             }
+                //         },
+                //         {
+                //             loader: "sass-loader" // compiles Sass to CSS
+                //         }
+                //     ]
+                // }
             ]
         },
         plugins: [
-            argv.size ? new BundleAnalyzerPlugin() : function () {}
+            argv.size ? new BundleAnalyzerPlugin() : function () {},
+            new HtmlWebPackPlugin({
+                template: "./src/index.html",
+                filename: "./index.html"
+            }),
+            new MiniCssExtractPlugin({
+                filename: "css/[name]-[hash:8].css",
+                chunkFilename: "[id].css"
+            })
         ]
     }
 };
