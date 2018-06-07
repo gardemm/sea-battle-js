@@ -2,7 +2,7 @@
 
 > jquery 3.x
 
-> IE >= 8 
+> IE >= 9 
 
 Play [demo](http://sea-battle-js.archebasov.ru).
 
