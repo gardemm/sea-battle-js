@@ -21,6 +21,7 @@
     "babel-core": "^7.0.0-beta.3",
     "babel-loader": "^8.0.0-beta.3",
     "babel-preset-stage-3": "^7.0.0-beta.3",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "extract-loader": "^2.0.1",
     "file-loader": "^1.1.11",
