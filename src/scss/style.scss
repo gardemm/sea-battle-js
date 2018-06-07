@@ -1,0 +1,251 @@
+// colors
+
+$primeCol: #3927b3;
+$secondCol: #6338ee;
+$lightCol: #bb86fd;
+$backgroundCol: #e5e5e5;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: $backgroundCol;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  .stats {
+    display: inline-block;
+    vertical-align: top;
+
+    .parameters {
+      display: inline-block;
+      margin-left: 20px;
+      width: 183px;
+    }
+
+    .levels {
+      $levelBackCol: #aadcff;
+
+      display: inline-block;
+      text-align: left;
+      border: 1px solid black;
+      margin-left: 27px;
+      padding: 20px;
+      background-color: $levelBackCol;
+      font-style: italic;
+      opacity: 1;
+
+      .level {
+        transition: opacity 0.3s ease;
+        border-bottom: 4px solid $levelBackCol;
+      }
+
+      .border1 {
+        border-bottom: 4px solid #890b0b;
+      }
+      .border2 {
+        border-bottom: 4px solid #260cff;
+      }
+      .border3 {
+        border-bottom: 4px solid #3dff0c;
+      }
+      .border4 {
+        border-bottom: 4px solid #ff97d5d1;
+      }
+      .border5 {
+        border-bottom: 4px inset #ffec0c;
+      }
+
+      .opacity {
+        opacity: 0.1;
+      }
+    }
+  }
+
+  .field {
+    position: relative;
+    display: inline-block;
+    width: 352px;
+
+    .cell {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #9e98c5;
+      float: left;
+      text-align: center;
+
+      &:not(.side) {
+        background-color: #f0feff;
+      }
+
+      &:not(.no-hover) {
+        cursor: pointer;
+        &:hover {
+          transition: background-color 0.3s linear;
+          background-color: #9e98c5;;
+        }
+      }
+
+      @-webkit-keyframes wound-animation {
+        0%   {background-color:yellow;}
+        100% {background-color:black; }
+      }
+
+      &.wound {
+        animation: 1s linear infinite;
+        background-color: orange;
+        /* Standard syntax */
+        animation-name: wound-animation;
+        animation-duration: 0.6s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      &.destroyed {
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M1 0 L0 1 L99 100 L100 99' fill='yellow' /><path d='M0 99 L99 0 L100 1 L1 100' fill='yellow' /></svg>") no-repeat center center;
+        background-size: 100% 100%, auto;
+        background-color: black;
+        transition: all 1s ease;
+      }
+
+      &.side {
+        color: black;
+        display: inline-block;
+        border: none;
+        margin: 1px;
+        text-align: center;
+        font-size: 22px;
+        text-shadow: 0px 1px 1px #bb86fd;
+      }
+
+      // border animation cell
+      &:hover::before, &:hover::after{
+        width: 100%;
+      }
+      &:hover span::before, &:hover span::after{
+        height: 100%;
+      }
+      /*----- button 6 -----*/
+      &::before{
+        left: 50%;
+        top: 0;
+        transition-duration: 0.4s;
+      }
+      &::after{
+        left: 50%;
+        bottom: 0;
+        transition-duration: 0.4s;
+      }
+      & span::before{
+        left: 0;
+        top: 50%;
+        transition-duration: 0.4s;
+      }
+      & span::after{
+        right: 0;
+        top: 50%;
+        transition-duration: 0.4s;
+      }
+      &:hover::before, &:hover::after{
+        left: 0;
+      }
+      &:hover span::before, &:hover span::after{
+        top: 0;
+      }
+
+      // div inside cell
+      .miss {
+        display: inline-block;
+        border-radius: 50%;
+        background-color: gray;
+        height: 0;
+        width: 0;
+        margin-top: 7px;
+        vertical-align: middle;
+        transition: all 0.3s ease-in;
+
+        &.created {
+          height: 15px;
+          width: 15px;
+          transition: all 0.1s ease;
+          box-shadow: 0 0 18px;
+        }
+      }
+    }
+    .left-side {
+      width: 32px;
+      height: 320px;
+      display: inline-block;
+      float: left;
+    }
+    .top-side {
+      margin-left: 32px;
+      width: 320px;
+      height: 32px;
+      float: left;
+      display: inline-block;
+    }
+    .content {
+      width: 352px;
+      height: 352px;
+      display: block;
+    }
+
+    @keyframes shake {
+      2%, 22% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      5%, 20% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      7%, 12%, 17% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      10%, 15% {
+        transform: translate3d(4px, 0, 0);
+      }
+
+      25%, 100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .overlay {
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      opacity: 0;
+      background-color: #e5e5e5;
+      line-height: 380px;
+      font-size: 0px;
+      &.show {
+        z-index: 1;
+        opacity: 0.7;
+        display: block;
+        font-size: 30px;
+        transition: all 1s ease;
+        .text {
+          padding-left: 20px;
+          animation: shake 4s cubic-bezier(.36, .07, .19, .97) both infinite;
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+          .arrow {
+            font-size: 50px;
+            position: absolute;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
