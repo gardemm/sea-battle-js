@@ -1,13 +1,25 @@
-# Морской бой (ES6 + JQuery 3.x)
+# Sea battle game js 
 
-# установка
+> jquery 3.x
+
+> IE >= 8 
+
+# install
 ```bash
     yarn
 ```
 
-## команды
+## dev
 ```bash   
-    yarn dev   # HMR
-    yarn serve # открываем на 8081
+
+    yarn dev   # webapck watch on changes
+    yarn serve # serve 8081
+
+```
+
+## build
+```bash
+
     yarn build # production 
+
 ```
