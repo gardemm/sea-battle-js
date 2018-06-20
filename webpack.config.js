@@ -36,6 +36,7 @@ module.exports = (env, argv) => {
                             options: {
                                 importLoaders: 2,
                                 sourceMap: true,
+                                url: false
                             }
                         },
                         {
@@ -43,7 +44,7 @@ module.exports = (env, argv) => {
                             options: {
                                 plugins:() => [
                                     autoprefixer({
-                                        browsers:['ie >= 8', 'last 4 version']
+                                        browsers:['ie >= 9', 'last 4 version']
                                     })
                                 ],
                                 sourceMap: true
@@ -55,6 +56,13 @@ module.exports = (env, argv) => {
                                 sourceMap: true
                             }
                         },
+                    ],
+                },
+                {
+                    test: /\.(gif|png|jpe?g|svg)$/i,
+                    use: [
+                        'file-loader',
+                        'image-webpack-loader'
                     ],
                 }
             ]

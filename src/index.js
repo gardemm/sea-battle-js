@@ -88,6 +88,25 @@ class SeaBattle {
         this.hitsCount[0].innerHTML = 0;
 
         this.fillCells()
+
+        this.addParalax()
+    }
+
+    /**
+     * paralax effect для background изображения
+     * ___________________________________________________
+     */
+    addParalax () {
+        let image = $('.background'),
+            xpos = 0,
+            ypos = 0
+        ;
+
+        $(window).mousemove(function(e) {
+            xpos = e.clientX / 290;
+            ypos = e.clientY / 150;
+            image.css({'transform' : 'translate(' + xpos +'%, ' + ypos + '%)'});
+        });
     }
 
 
