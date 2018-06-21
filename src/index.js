@@ -21,17 +21,15 @@ class SeaBattle {
         this.height = height;
         this.width = width;
 
-        this.content = $('.field>.content'); // блок с контентом для поля кораблей
-        this.leftSide = $('.field>.left-side'); // блок с контентом для цифр слева
-        this.topSide = $('.field>.top-side'); // блок с контентом для букв сверху
+        this.fieldElm = $('.field');
+        this.content = this.fieldElm.find('.content'); // блок с контентом для поля кораблей
+        this.leftSide = this.fieldElm.find('.left-side'); // блок с контентом для цифр слева
+        this.topSide = this.fieldElm.find('.top-side'); // блок с контентом для букв сверху
         this.shotsCount = $('.shots-count'); // кол-во выстрелов
         this.remainsCount = $('.remains-count'); // сколько осталось попасть
         this.hitsCount = $('.hits-count'); // кол-во попаданий
         this.shipsCount = $('.ships-count'); // количество живых кораблей
         this.overlay = $('.overlay'); // оверлей о завершении игры
-
-        // закончена ли текущая игра
-        this.overlay[0].className = 'overlay';
 
         // уровни
         this.lev1 = $('.level1');
@@ -39,6 +37,9 @@ class SeaBattle {
         this.lev3 = $('.level3');
         this.lev4 = $('.level4');
         this.lev5 = $('.level5');
+
+        // закончена ли текущая игра
+        this.overlay[0].className = 'overlay';
 
         // обнуляем таблицу результатов
         this.lev1.removeClass('border1 opacity');
@@ -53,25 +54,38 @@ class SeaBattle {
             resetGame();
         });
 
+        // css
+        this.overlay.css({
+            width: width*CELL_SIZE_PX + 'px',
+            height: height*CELL_SIZE_PX + 'px',
+            marginLeft: CELL_SIZE_PX + 'px',
+            marginTop: CELL_SIZE_PX + 'px'
+        });
+
+        this.overlay.find('.text').css({
+            lineHeight: height*CELL_SIZE_PX + 'px'
+        });
+
+        this.fieldElm.css({
+            width: (width+1)*CELL_SIZE_PX + 'px',
+            height: (height+1)*CELL_SIZE_PX + 'px'
+        });
+
         this.content.css({
             width: (width+1)*CELL_SIZE_PX + 'px',
             height: (height+1)*CELL_SIZE_PX + 'px'
         });
 
-        $('.field').css({
-            width: (width+1)*CELL_SIZE_PX + 'px',
-            height: (height+1)*CELL_SIZE_PX + 'px'
-        });
-
-        $('.top-side').css({
+        this.topSide.css({
             width: (width+1)*CELL_SIZE_PX + 'px',
             height: CELL_SIZE_PX + 'px'
-        })
+        });
 
-        $('.left-side').css({
+        this.leftSide.css({
             width: CELL_SIZE_PX + 'px',
             height: height*CELL_SIZE_PX + 'px'
-        })
+        });
+        // --- css
 
         this.field = new Field(height, width);
 
@@ -87,13 +101,13 @@ class SeaBattle {
         // количество попаданий
         this.hitsCount[0].innerHTML = 0;
 
-        this.fillCells()
+        this.fillCells();
 
-        this.addParalax()
+        this.addParalax();
     }
 
     /**
-     * paralax effect для background изображения
+     * paralax для background изображения
      * ___________________________________________________
      */
     addParalax () {
