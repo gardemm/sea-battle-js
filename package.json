@@ -1,7 +1,7 @@
 {
   "name": "sea-battle",
   "version": "1.0.0",
-  "description": "Sea Battle JS App",
+  "description": "Sea Battle JS Game ",
   "main": "index.js",
   "scripts": {
     "serve": "http-server dist/",
@@ -9,7 +9,7 @@
     "dev": "webpack --mode development --watch"
   },
   "keywords": [
-    "sea-battle"
+    "морской бой, морской бой игра, игра морской бой, sea battle, sea battle js"
   ],
   "author": "gardem",
   "license": "MIT",
@@ -40,10 +40,10 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.12.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "font-awesome": "^4.7.0"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1"
   }
 }

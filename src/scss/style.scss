@@ -5,11 +5,20 @@ $textShadowCol: #bb86fd; // цвет тени текста
 $backgroundCol: #111a24; // цвет фона без картинки
 $borderCellCol: #9e98c5; // цвет бордера ячеек
 
+@font-face {
+  font-family: 'PT Sans Caption Bold';
+  src: url(../fonts/PT_Sans-Caption-Web-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: 'PT Sans Caption Regular';
+  src: url(../fonts/PT_Sans-Caption-Web-Regular.ttf) format("truetype");
+}
+
 html, body {
   height: 100%;
   margin: 0;
   background-color: $backgroundCol;
-  font-family: 'PT Sans Caption', sans-serif;
+  font-family: 'PT Sans Caption Regular', 'PT Sans Caption Bold', sans-serif;
 }
 
 .wrapper {
