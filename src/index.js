@@ -3,7 +3,6 @@ import Field from "./field";
 import $ from 'jquery';
 
 const CELL_SIZE_PX = 32;
-const lang = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 /**
  * Dom манипуляции морского боя
@@ -161,13 +160,24 @@ class SeaBattle {
      * _____________________________
      */
     fillCells () {
+        const lang = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
         this.content.empty();
         this.leftSide.empty();
         this.topSide.empty();
         // заполняем ячейки
         for(let i = 0; i < this.height; i++) {
-            this.topSide.append(`<div class='cell side no-hover'>${lang[i]}</div>`)
-            this.leftSide.append(`<div class='cell side no-hover'>${i+1}</div>`)
+
+            let topDiv = document.createElement('div');
+            topDiv.className = 'cell side no-hover';
+            topDiv.innerHTML = lang[i];
+
+            let leftDiv = document.createElement('div');
+            leftDiv.className = 'cell side no-hover';
+            leftDiv.innerHTML = i + 1 + '';
+
+            this.topSide.append(topDiv);
+            this.leftSide.append(leftDiv);
 
             for(let j = 0; j < this.width; j++) {
                 let div = document.createElement('div'),
@@ -179,6 +189,22 @@ class SeaBattle {
 
                 // для красивой анимации через бордеры
                 div.appendChild(span);
+
+                // равномерное мигание внешних координат ячейки при наведении
+                $(div).hover(() => {
+                    // mouseenter
+                    let leftSideDiv = this.leftSide.children('.cell:eq(' + i + ')')[0],
+                        topSideDiv = this.topSide.children('.cell:eq(' + j + ')')[0]
+                    ;
+
+                    void leftSideDiv.offsetWidth; // repaint trigger
+                    leftSideDiv.classList.add('active');
+                    topSideDiv.classList.add('active');
+                }, () => {
+                    // mouseleave
+                    this.leftSide.children('.cell:eq(' + i + ')').removeClass('active');
+                    this.topSide.children('.cell:eq(' + j + ')').removeClass('active');
+                });
 
                 // есть корабль
                 if (cell.status !== 0) {

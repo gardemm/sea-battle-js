@@ -119,6 +119,26 @@ html, body {
       float: left;
       text-align: center;
 
+      // подсветка боковых координат
+      &.side {
+        transition: color 0.3s linear;
+        &.active {
+          color: #403d58;
+          animation: 1s linear infinite;
+          /* Standard syntax */
+          animation-name: side-cell-animation;
+          animation-duration: 0.6s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+      }
+
+      @-webkit-keyframes side-cell-animation {
+        0%   {color:#403d58;}
+        100% {color:white; }
+      }
+
       &:not(.side) {
         background-color: #f0feff;
       }
@@ -127,7 +147,7 @@ html, body {
         cursor: pointer;
         &:hover {
           transition: background-color 0.3s linear;
-          background-color: $borderCellCol;;
+          background-color: $borderCellCol;
         }
       }
 
