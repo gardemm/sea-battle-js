@@ -2,7 +2,7 @@
 
 // colors
 $textShadowCol: #bb86fd; // цвет тени текста
-$backgroundCol: #e5e5e5; // цвет фона без картинки
+$backgroundCol: #111a24; // цвет фона без картинки
 $borderCellCol: #9e98c5; // цвет бордера ячеек
 
 html, body {
@@ -32,13 +32,12 @@ html, body {
   }
 
   .footer {
+    margin-top: 35px;
     position: relative;
-    font-style: italic;
-    .github {
-      width: 23px;
-      path {
-        fill: #ccc;
-      }
+    color: white;
+    .link {
+      font-size: 1.2em;
+      color: #aaddff;
     }
   }
 
