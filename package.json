@@ -14,10 +14,10 @@
   "author": "gardem",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.41",
-    "@babel/preset-env": "^7.0.0-beta.41",
-    "@babel/preset-stage-3": "^7.0.0-beta.41",
-    "autoprefixer": "^8.6.0",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-stage-3": "^7.0.0-beta.51",
+    "autoprefixer": "^8.6.3",
     "babel-core": "^7.0.0-beta.3",
     "babel-loader": "^8.0.0-beta.3",
     "babel-preset-stage-3": "^7.0.0-beta.3",
@@ -33,14 +33,15 @@
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "resolve-url-loader": "^2.3.0",
-    "sass-loader": "^6.0.7",
+    "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.11.1",
+    "webpack": "^4.12.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.3"
+    "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1"
   }
 }

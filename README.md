@@ -15,7 +15,7 @@ Play [demo](http://sea-battle-js.archebasov.ru).
 ## dev
 ```bash   
     yarn dev   # webapck watch on changes
-    yarn serve # serve 8081
+    yarn serve # serve 8080
 
 ```
 
