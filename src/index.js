@@ -154,7 +154,6 @@ class SeaBattle {
         }
     }
 
-
     /**
      * Привязка кораблей и событий к DOM
      * _____________________________
@@ -282,9 +281,28 @@ class SeaBattle {
         }
     }
 
+    /**
+     * отображать счетчик посещаемости
+     * ___________________________________
+     */
+    static liveInternetCounter () {
+        let img = "<img src='//counter.yadro.ru/hit?t23.6;r"+
+            escape(document.referrer)+((typeof(screen)==="undefined")?"":
+                ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+            ";h"+escape(document.title.substring(0,150))+";"+Math.random()+
+            "' alt='' title='LiveInternet: показано число посетителей за"+
+            " сегодня' "+
+            "border='0' width='88' height='15'>";
+
+        $('#liveinternet').append(img);
+    }
 }
 
 let game = new SeaBattle(10,10);
+
+// add counter
+SeaBattle.liveInternetCounter();
 
 /**
  * Начать сначала

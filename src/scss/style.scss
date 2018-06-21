@@ -5,6 +5,17 @@ $textShadowCol: #bb86fd; // цвет тени текста
 $backgroundCol: #111a24; // цвет фона без картинки
 $borderCellCol: #9e98c5; // цвет бордера ячеек
 
+// Roboto-Bold
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url(../fonts/Roboto-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: 'Roboto Bold Italic';
+  src: url(../fonts/Roboto-BoldItalic.ttf) format("truetype");
+}
+
+// PT Sans Caption Bold
 @font-face {
   font-family: 'PT Sans Caption Bold';
   src: url(../fonts/PT_Sans-Caption-Web-Bold.ttf) format("truetype");
@@ -41,13 +52,40 @@ html, body {
   }
 
   .footer {
+    font-family: 'Roboto Bold', 'Roboto Bold Italic', sans-serif;
     margin-top: 35px;
     position: relative;
     color: white;
+    .year {
+      font-size: 0.9em;
+    }
     .link {
+      text-decoration: none;
       font-size: 1.2em;
       color: #aaddff;
+
+      /* effect-shine */
+      &:hover {
+        -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 10%, #000 50%, rgba(0,0,0,.6) 90%);
+        -webkit-mask-size: 200%;
+        animation: shine 4s infinite;
+      }
     }
+
+    @-webkit-keyframes shine {
+      0% {
+        -webkit-mask-position: -50%;
+      }
+
+      70% {
+        -webkit-mask-position: 150%;
+      }
+
+      100% {
+        -webkit-mask-position: -50%;
+      }
+    }
+
   }
 
   .stats {
