@@ -3,6 +3,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = (env, argv) => {
 
@@ -108,6 +109,7 @@ module.exports = (env, argv) => {
                 filename: "[name]-[hash:8].css",
                 chunkFilename: "[id].css"
             }),
+            new FaviconsWebpackPlugin('./src/img/ship128.png'),
             argv.size ? new BundleAnalyzerPlugin() : function () {}
         ]
     }
